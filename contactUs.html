@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="icon" 
+      type="image/png" 
+      href="./img/favicon.png">
+</head>
+<body>
+    <nav id="nav">
+        <div class="wrap">
+            <a href="index.html"> <img src="./img/logo.png" alt="logo" class="logo"></a>
+            <span class="menu" onclick="openMenu()">
+                <span></span>
+                <span id="hover-line"></span>
+                <span></span>                        
+            </span>
+        </div>
+    </nav>
+    <div class="hamburger" id="ham">
+        <div class="close"  onclick="closeMenu()"><div id="first"></div><div id="second"></div></div>
+        <ul class="links">
+            <li><a href="./index.html">Главная</a></li>
+            <li><a href="./portfolio.html">Порфтолио</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Наши сервисы</a></li>
+        </ul>
+    </div>
+    <div class="contact">
+        <div class="container">
+            <div class="contact-info">
+                <img src="./img/phone-2-128.png" alt="mobile-phone">
+                <h3><a href="tel:+380989724811">+38(098) 972-48-11</a></h3>
+                <img src="./img/phone-17-128.png" alt="home-phone">
+                <h3><a href="tel:0800506800">0(800) 506-800</a></h3>
+                <img src="./img/email-3-128.png" alt="email">
+                <h3><a href="mailto:romaniv.roma2013@gmail.com">romaniv.roma2013@gmail.com</a></h3>
+            </div>
+            <div class="contact-form">
+                <form action="#">
+                    <h2 class="title">Связаться с нами</h2>
+                    <p class="description">Заполните форму и мы вам перезвоним, или можете сами с нами связаться</p>
+                    <input type="text" placeholder="Как к вам обращатся?">
+                    <div class="row">
+                        <input class="column" type="email" placeholder="Email">
+                        <input class="column" type="tel" placeholder="Номер телефона">
+                    </div>
+                    <textarea class="message" type="text" placeholder="Cообщение...(не обязательно)"></textarea><br>
+                    <button name="submit" class="button"><span>Отправить</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <a href="./index.html"><img class="footer-logo" src="./img/logo.png" alt="footer-logo"></a>
+                    <p class="description">Soul Power - это команда профессиональных программистов, дизайнеров и менеджеров, которая сделает дизайн и поместит его на сайт. Мы делаем так, чтобы наш клиент был доволен как ценой, так и сделанной работой.</p>
+                    <a href="./aboutUs.html" class="button">Подробнее</a>
+                </div>
+                <div class="column">
+                    <p class="title">Ссылки</p>
+                    <ul class="col-list">
+                        <li><a href="./index.html">Главная</a></li>
+                        <li><a href="./services.html">Наши услуги</a></li>
+                        <li><a href="./portfolio.html">Портфолио</a></li>
+                        <li><a href="https://donatepay.eu/">Поддержать проект</a></li>
+                        <li><a href="./aboutUs.html">О нас</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCueQtyt2CWwlHkjPmOYEjmQ">Наш канал</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                      <p class="title">Контакты</p>
+                    <ul class="col-list">
+                        <li><p class="description">Свяжитесь с нами по почте или по телефону, мы ждём именно вас.</p></li>
+                        <li><a href="tel:+380989724811">+38 098 972-48-11</a></li>
+                        <li><a href="mailto:romaniv.roma2013@gmail.com" class="email">romaniv.roma2013@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <p class="title">Следовать</p>
+                    <ul class="soc-icons">
+                        <li><a href="#"><img src="./img/facebook.svg" alt=""></a></li>
+                        <li><a href="#"><img src="./img/twitter.svg" alt=""></a></li>
+                        <li><a href="#"><img src="./img/google.svg" alt=""></a></li>
+                    </ul>
+                </div>
+              </div>
+              <hr>
+              <p class="copyright">Soul Power © 2021</p>
+
+        </div>
+    </footer>
+    <script src="./srcript.js"></script>
+</body>
+</html>
