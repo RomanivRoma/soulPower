@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    $titles = array("Doersken", "If Form", "Wedler", "Wedler", "Matt Portfolio",
+                 "Basin", "Dovetail", "DeathStar 404 page", "Success Page", "Rooted",
+                 "Solutions", "Tsks 404 Page");
+    $imgs = array("./img/doerksen-style-tile-page.webp", "./img/contact-form.webp",
+                 "./img/happy_holidays-page.webp", "./img/userforge-portfolio-page.webp",
+                 "./img/mf-portfolio.webp", "./img/basin-page.webp", "./img/dovetail-ui-shot-form.webp",
+                 "./img/deathstar_404.webp", "./img/success-page-form.webp", "./img/rooted-form.webp",
+                 "./img/solutions-portfolio.webp", "./img/tsks-form-404.webp" );
+    $_SESSION['imgs'] = $imgs;
+    $_SESSION['titles'] = $titles;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +21,27 @@
     <link rel="stylesheet" href="./style/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" 
       type="image/png" 
       href="./img/favicon.png">
 </head>
 <body>
+    <?php
+        if(isset($_COOKIE['name'])):
+            echo " <div class=\"modal\">
+                        Добро пожаловать, ". $_COOKIE['name'] .
+                    "</div>";
+
+        ?>
+
+
+    <?php endif; ?>
     <a href="./contactUs.html"><img src="./img/phone.png" alt="phone" class="phone"></a>
     <nav id="nav">
         <div class="wrap">
-            <a href="index.html"> <img src="./img/logo.png" alt="logo" class="logo"></a>
-            <span class="menu" onclick="openMenu()">
+            <a href="index.php"> <img src="./img/logo.png" alt="logo" class="logo"></a>
+            <span class="menu" onclick="openMenu()" id="menu">
                 <span></span>
                 <span id="hover-line"></span>
                 <span></span>                        
@@ -27,8 +52,8 @@
             <div class="hamburger" id="ham">
                 <div class="close"  onclick="closeMenu()"><div id="first"></div><div id="second"></div></div>
                 <ul class="links">
-                    <li><a href="./index.html">Главная</a></li>
-                    <li><a href="./portfolio.html">Порфтолио</a></li>
+                    <li><a href="index.php">Главная</a></li>
+                    <li><a href="portfolio.php">Порфтолио</a></li>
                     <li><a href="./aboutUs.html">О нас</a></li>
                     <li><a href="./services.html">Наши сервисы</a></li>
                 </ul>
@@ -161,39 +186,41 @@
                     <p class="description">Наше портфолио славится множествами качественными работами. Наши клиенты являются большими компаниями на мировом рынке.</p>
                 </div>
             </div>
+            <form class="search-form" method="get" action="search.php">
+                <label for="search">Поиск по макету:</label>
+                <div class="wr">
+
+                    <div class="search">
+                        <input list="search" type="search" class="searchTerm" placeholder="Что ищите?" name="search">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             <div class="brands row">
+                <?php
+                        for($i = 0; $i < count($titles); $i++):
+                            ?>
                 <div class="wrap-portfolio">
-                    <img src="./img/doerksen-style-tile.webp" alt="development" class="brand">
+                    <img src="<?php echo $imgs[$i]; ?>" alt="development" class="brand">
                     <div class="overlay">
-                        <h3 class="title">Doersken</h3>
+                        <h3 class="title"><?php echo $titles[$i]; ?></h3>
                         <a href="#" class="button">Подробнее</a>
                     </div>
                 </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/contact-form.webp" alt="web" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">If Form</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/happy_holidays.webp" alt="graphic" class="brand">
-                    <div class="overlay">   
-                        <h3 class="title">Wedler</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/rooted.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Bridgie</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-            </div> 
+                <?php endfor; ?>
+            </div>
+            </form>
+            <datalist id="search">
+                <option value="landing">
+                <option value="404">
+                <option value="form">
+                <option value="portfolio">
+                <option value="page">
+            </datalist>
             <div class="but-portfolio">
-                <a href="./portfolio.html" class="button"> Больше Портфолио</a>            
-            </div>  
+                <a href="portfolio.php" class="button"> Больше Портфолио</a>
+            </div>
 
         </section>
         <section class="block6">
@@ -260,29 +287,29 @@
         </section>
         <section class="block8">
             <div class="container">
-                <form action="" class="contact-form">
+                <form action="confirm.php" method="post" class="contact-form">
                     <h2 class="title">Заказать услугу</h2>
-                    <input type="text" placeholder="Как к вам обращатся?">
+                    <input name="userName" type="text" placeholder="Как к вам обращатся?" required>
                     <div class="row">
-                        <input class="column" type="email" placeholder="Email">
-                        <input class="column" type="tel" placeholder="Номер телефона">
+                        <input name="email" class="column" type="email" placeholder="Email" required>
+                        <input name="phone" class="column" type="tel" placeholder="Номер телефона">
                     </div>
                     <div class="choice">
                         <h4 class="title">Услуга:</h4>
                         <label>
-                            <input type="radio" name="sevrice" id="">
+                            <input type="radio" name="service" id="">
                             <span>Лендинг</span>
                         </label>
                         <label> 
-                            <input type="radio" name="sevrice" id="">
+                            <input type="radio" name="service" id="">
                             <span> Веб-сайт</span>
                         </label>
                         <label>
-                            <input type="radio" name="sevrice" id="">
+                            <input type="radio" name="service" id="">
                             <span>Веб-приложение</span>
                         </label>
                     </div>
-                    <textarea class="message" type="text" placeholder="Cообщение...(не обязательно)"></textarea><br>
+                    <textarea name="message" class="message" type="text" placeholder="Cообщение...(не обязательно)"></textarea><br>
                     <button name="submit" class="button"><span>Отправить</span></button>
 
                 </form>
@@ -292,16 +319,16 @@
             <div class="container">
                 <div class="row">
                     <div class="column">
-                        <a href="./index.html"><img class="footer-logo" src="./img/logo.png" alt="footer-logo"></a>
+                        <a href="index.php"><img class="footer-logo" src="./img/logo.png" alt="footer-logo"></a>
                         <p class="description">Soul Power - это команда профессиональных программистов, дизайнеров и менеджеров, которая сделает дизайн и поместит его на сайт. Мы делаем так, чтобы наш клиент был доволен как ценой, так и сделанной работой.</p>
                         <a href="./aboutUs.html" class="button">Подробнее</a>
                     </div>
                     <div class="column">
                         <p class="title">Ссылки</p>
                         <ul class="col-list">
-                            <li><a href="./index.html">Главная</a></li>
+                            <li><a href="index.php">Главная</a></li>
                             <li><a href="./services.html">Наши услуги</a></li>
-                            <li><a href="./portfolio.html">Портфолио</a></li>
+                            <li><a href="portfolio.php">Портфолио</a></li>
                             <li><a href="https://donatepay.eu/">Поддержать проект</a></li>
                             <li><a href="./aboutUs.html">О нас</a></li>
                             <li><a href="https://www.youtube.com/channel/UCueQtyt2CWwlHkjPmOYEjmQ">Наш канал</a></li>

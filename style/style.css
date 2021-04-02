@@ -20,6 +20,9 @@ nav{
     z-index: 3;
     transition: ease-in-out background .5s;
 }
+nav.b{
+    background: rgb(16, 16, 16) !important;
+}
 .phone{
     position: fixed;
     z-index: 3;
@@ -63,6 +66,16 @@ nav{
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 rgba(255, 230, 0, 0);
 	}
+}
+.modal{
+    background: #292929;
+    padding: 20px;
+    border-radius: 80px;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    color: white;
+    z-index: 999;
 }
 .wrap{
     display: flex;
@@ -162,6 +175,9 @@ nav{
     width: 100%;
     text-align: center;
     overflow: hidden;
+}
+.text.srch{
+    padding: 80px 20px 20px 20px;
 }
 .text .title{
     margin: 20px 0;
@@ -338,7 +354,7 @@ meter{
 .brands{
     text-align: center;
     position: relative;
-    font-size: 0;
+    /*font-size: 0;*/
     width: 100%;
 }
 .brands.row{
@@ -351,6 +367,16 @@ meter{
 .wrap-portfolio {
     position: relative;
     width: 25%;
+}
+.wrap-portfolio.srch-wrap{
+    width: 50%;
+    font-size: 25px;
+}
+.wrap-portfolio.srch-wrap h3{
+    font-size: 33px;
+}
+.wrap-portfolio.srch-wrap .button {
+    font-size: 28px;
 }
 .wrap-portfolio img{
   display: block;
@@ -503,7 +529,48 @@ meter{
 }
 
 .block8 .button{
-    border: #000 3px solid;
+    border: #000000 3px solid;
+}
+.search {
+    width: 30%;
+    display: flex;
+    margin: 40px auto;
+}
+.search-form label{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.searchTerm {
+    width: 100%;
+    border: 3px solid #000000;
+    border-right: none;
+    padding: 15px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.searchTerm:focus{
+    color: #000000;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 3px solid #000;
+    background: #ffe600;
+    color: #000;
+    text-align: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.wr{
+    display: flex;
+    justify-content: center;
 }
 footer{
     background: url(../img/footer_bg\ 1.png) no-repeat center top / cover;
@@ -514,6 +581,13 @@ footer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+.error{
+    display: flex;
+    color: red;
+    gap: 20px;
+    flex-direction: column;
+    margin-bottom: 40px;
 }
 footer .description{
     line-height: 1.5;
@@ -727,7 +801,73 @@ footer .copyright{
    opacity: 1;
    right: -7px;
 }
+/* notification */
+.notif-back{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notif-box{
+    background: white;
+    -webkit-box-shadow: 0px 0px 29px 2px rgba(50, 50, 50, 0.41);
+    -moz-box-shadow:    0px 0px 29px 2px rgba(50, 50, 50, 0.41);
+    box-shadow:         0px 0px 29px 2px rgba(50, 50, 50, 0.41);
+    border-radius: 15px;
+    width: 400px;
+}
+.notif-box .notif-img{
+    display: flex;
+    justify-content: center;
+}
+.notif-box img{
+    width: 80px;
+    margin-top: 50px;
+}
+.notif-box .text{
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    color: #999999;
+}
+.notif-box .success-heading{
+    color: #71C341;
+    margin-bottom: 20px ;
+}
+.notif-box .error-heading{
+    color: #FF4646;
+    margin-bottom: 20px ;
+}
+.notif-box .notif-button{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.notif-box .notif-button a{
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 50px;
+    transition: transform .3s;
+}
+.notif-box .notif-button a:hover{
+    transform: scale(1.2);
+}
+.notif-button .success{
+    background-color: #71C341;
+}
+.notif-button   .success:hover{
+    background-color: #599735;
+}
+.notif-button .error{
+    background-color: #FF4646;
+}
+.notif-button .error:hover{
+    background-color: #b82b2b;
 
+}
 
 @media only screen and (max-width: 990px){
     .box{
@@ -801,6 +941,9 @@ footer .copyright{
     }
     .brands .wrap-portfolio{
         width: 50%;
+    }
+    .wrap-portfolio.srch-wrap .button{
+        font-size: 22px;
     }
     .block7 .crew{
         flex: 100%;

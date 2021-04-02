@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="./style/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="icon" 
+    <link rel="icon"
       type="image/png" 
       href="./img/favicon.png">
 </head>
 <body>
-    <img src="./img/phone.png" alt="phone" class="phone">
+    <a href="./contactUs.html"><img src="./img/phone.png" alt="phone" class="phone"></a>
     <nav id="nav">
         <div class="wrap">
-            <a href="index.html"> <img src="./img/logo.png" alt="logo" class="logo"></a>
-            <span class="menu" onclick="openMenu()">
+            <a href="index.php"> <img src="./img/logo.png" alt="logo" class="logo"></a>
+            <span class="menu" onclick="openMenu()" id="menu">
                 <span></span>
                 <span id="hover-line"></span>
                 <span></span>                        
@@ -28,8 +28,8 @@
         <div class="hamburger" id="ham">
             <div class="close"  onclick="closeMenu()"><div id="first"></div><div id="second"></div></div>
             <ul class="links">
-                <li><a href="./index.html">Главная</a></li>
-                <li><a href="./portfolio.html">Порфтолио</a></li>
+                <li><a href="index.php">Главная</a></li>
+                <li><a href="portfolio.php">Порфтолио</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Наши сервисы</a></li>
             </ul>
@@ -57,92 +57,32 @@
                 <h2 class="title">Веб портфолио</h2>
             </div>
         </div>
-            <div class="brands row">
-                <div class="wrap-portfolio">
-                    <img src="./img/doerksen-style-tile.webp" alt="development" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Doersken</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
+
+        <div class="brands row">
+                    <?php
+                        $titles = array("Doersken", "If Form", "Wedler", "Wedler", "Matt Portfolio",
+                                        "Basin", "Dovetail", "DeathStar 404 page", "Success Page", "Rooted",
+                                        "Solutions", "Tsks 404 Page");
+                        $imgs = array("./img/doerksen-style-tile-page.webp", "./img/contact-form.webp",
+                            "./img/happy_holidays-page.webp", "./img/userforge-portfolio-page.webp",
+                            "./img/mf-portfolio.webp", "./img/basin-page.webp", "./img/dovetail-ui-shot-form.webp",
+                            "./img/deathstar_404.webp", "./img/success-page-form.webp", "./img/rooted-form.webp",
+                            "./img/solutions-portfolio.webp", "./img/tsks-form-404.webp" );
+                    session_start();
+                    $_SESSION['imgs'] = $imgs;
+                    $_SESSION['titles'] = $titles;
+                        for($i = 0; $i < count($titles); $i++):
+                            ?>
+                        <div class="wrap-portfolio">
+                            <img src="<?php echo $imgs[$i]; ?>" alt="development" class="brand">
+                            <div class="overlay">
+                                <h3 class="title"><?php echo $titles[$i]; ?></h3>
+                                <a href="#" class="button">Подробнее</a>
+                            </div>
+                        </div>
+                    <?php endfor; ?>
                 </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/contact-form.webp" alt="web" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">If Form</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/happy_holidays.webp" alt="graphic" class="brand">
-                    <div class="overlay">   
-                        <h3 class="title">Wedler</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/userforge-landing-page.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Useforge</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/mf-portfolio.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Matt Portfolio</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/basin-thumbnail.webp" alt="graphic" class="brand">
-                    <div class="overlay">   
-                        <h3 class="title">Basin</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/dovetail-ui-shot.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Dovetail</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/deathstar_404.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">DeathStar 404 page</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/success.webp" alt="graphic" class="brand">
-                    <div class="overlay">   
-                        <h3 class="title">Success Page</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/rooted.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Rooted</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/solutions.webp" alt="graphic" class="brand">
-                    <div class="overlay">
-                        <h3 class="title">Solutions</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-                <div class="wrap-portfolio">
-                    <img src="./img/tsks.webp" alt="graphic" class="brand">
-                    <div class="overlay">   
-                        <h3 class="title">Tsks 404 Page</h3>
-                        <a href="#" class="button">Подробнее</a>
-                    </div>
-                </div>
-            </div> 
+            </form>
     </section>
     <section class="block7 port">
         <div class="container">
@@ -205,16 +145,16 @@
         <div class="container">
             <div class="row">
                 <div class="column">
-                    <a href="./index.html"><img class="footer-logo" src="./img/logo.png" alt="footer-logo"></a>
+                    <a href="index.php"><img class="footer-logo" src="./img/logo.png" alt="footer-logo"></a>
                     <p class="description">Soul Power - это команда профессиональных программистов, дизайнеров и менеджеров, которая сделает дизайн и поместит его на сайт. Мы делаем так, чтобы наш клиент был доволен как ценой, так и сделанной работой.</p>
                     <a href="./aboutUs.html" class="button">Подробнее</a>
                 </div>
                 <div class="column">
                     <p class="title">Ссылки</p>
                     <ul class="col-list">
-                        <li><a href="./index.html">Главная</a></li>
+                        <li><a href="index.php">Главная</a></li>
                         <li><a href="./services.html">Наши услуги</a></li>
-                        <li><a href="./portfolio.html">Портфолио</a></li>
+                        <li><a href="portfolio.php">Портфолио</a></li>
                         <li><a href="https://donatepay.eu/">Поддержать проект</a></li>
                         <li><a href="./aboutUs.html">О нас</a></li>
                         <li><a href="https://www.youtube.com/channel/UCueQtyt2CWwlHkjPmOYEjmQ">Наш канал</a></li>
